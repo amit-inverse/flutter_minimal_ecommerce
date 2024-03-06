@@ -33,7 +33,13 @@ class MyDrawer extends StatelessWidget {
               MyListTile(
                 text: 'Shop',
                 icon: Icons.home,
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  // pop drawer first
+                  Navigator.pop(context);
+                  
+                  // go to shop page
+                  Navigator.pushNamedAndRemoveUntil(context, '/shop_page', (route) => false);
+                },
               ),
 
               // cart tile
@@ -57,7 +63,7 @@ class MyDrawer extends StatelessWidget {
             child: MyListTile(
               text: 'Exit',
               icon: Icons.logout,
-              onTap: () {},
+              onTap: () => Navigator.pushNamedAndRemoveUntil(context, '/intro_page', (route) => false),
             ),
           ),
         ],
