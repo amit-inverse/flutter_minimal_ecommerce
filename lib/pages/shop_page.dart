@@ -14,24 +14,46 @@ class ShopPage extends StatelessWidget {
     final products = context.watch<Shop>().shop;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Shop Page'),
-      ),
-      drawer: const MyDrawer(),
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: ListView.builder(
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          // get each individual product from shop
-          final product = products[index];
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: const Text('Shop Page'),
+        ),
+        drawer: const MyDrawer(),
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: ListView(
+          children: [
+            const SizedBox(
+              height: 25,
+            ),
 
-          // return as a product tile UI
-          return MyProductTile(product: product);
-        },
-      ),
-    );
+            // shop subtitle
+            Center(
+              child: Text(
+                'Pick from a selected list of premium products',
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.inversePrimary),
+              ),
+            ),
+
+            // product list
+            SizedBox(
+              height: 550,
+              child: ListView.builder(
+                padding: const EdgeInsets.all(15),
+                scrollDirection: Axis.horizontal,
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  // get each individual product from shop
+                  final product = products[index];
+
+                  // return as a product tile UI
+                  return MyProductTile(product: product);
+                },
+              ),
+            ),
+          ],
+        ));
   }
 }
