@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
 import '../models/product.dart';
+import '../models/shop.dart';
 
 class MyProductTile extends StatelessWidget {
   final Product product;
@@ -10,6 +12,36 @@ class MyProductTile extends StatelessWidget {
     super.key,
     required this.product,
   });
+
+  // add to cart button pressed
+  void addToCart(BuildContext context) {
+    // show a dialog box to ask user to confirm to add to cart
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: const Text('Add this item to your cart?'),
+        actions: [
+          // cancel button
+          MaterialButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+
+          // yes button
+          MaterialButton(
+            onPressed: () {
+              // pop dialog box
+              Navigator.pop(context);
+              
+              // add to cart
+              context.read<Shop>().addToCart(product);
+            },
+            child: const Text('Yes'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +112,7 @@ class MyProductTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () => addToCart(context),
                   icon: const Icon(
                     Icons.add,
                   ),
