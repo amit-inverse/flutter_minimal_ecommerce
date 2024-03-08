@@ -10,7 +10,7 @@ class Shop extends ChangeNotifier {
       name: 'Product 1',
       price: 99.99,
       description: 'Some Description',
-      // imagePath: imagePath,
+      imagePath: 'assets/hoodie.jpg',
     ),
 
     // product 2
@@ -18,7 +18,7 @@ class Shop extends ChangeNotifier {
       name: 'Product 2',
       price: 99.99,
       description: 'Some Description',
-      // imagePath: imagePath,
+      imagePath: 'assets/hoodie.jpg',
     ),
 
     // product 3
@@ -26,7 +26,7 @@ class Shop extends ChangeNotifier {
       name: 'Product 3',
       price: 99.99,
       description: 'Some Description',
-      // imagePath: imagePath,
+      imagePath: 'assets/hoodie.jpg',
     ),
 
     // product 4
@@ -34,7 +34,7 @@ class Shop extends ChangeNotifier {
       name: 'Product 4',
       price: 99.99,
       description: 'Some Description',
-      // imagePath: imagePath,
+      imagePath: 'assets/hoodie.jpg',
     ),
   ];
 
